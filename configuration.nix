@@ -14,8 +14,16 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader = {
+    efi.canTouchEfiVariables = true;
+    grub = {
+      enable = true;
+      devices = [ "nodev" ];
+      efiSupport = true;
+      useOSProber = true;
+    };
+  };
+  # boot.loader.systemd-boot.enable = true;
 
   networking.hostName = "tabletop";
   networking.networkmanager.enable = true;
@@ -38,6 +46,12 @@
       plugins = [ "git" ];
     };
     enable = true;
+  };
+
+  programs.tmux = {
+    enable = true;
+    escapeTime = 0;
+    keyMode = "vi";
   };
 
   # Enable the GNOME Desktop Environment.
@@ -78,11 +92,14 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  users.defaultUserShell = pkgs.zsh;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.joris = {
     isNormalUser = true;
     description = "Joris";
     extraGroups = [ "networkmanager" "wheel" ];
+    useDefaultShell = true;
     packages = with pkgs; [
     #  thunderbird
     ];
@@ -95,6 +112,11 @@
         relativenumber = true;
         expandtab = true;
       };
+    };
+    programs.git = {
+      enable = true;
+      userName = "Joris Pevcevičius";
+      userEmail = "joris.pevcas@gmail.com";
     };
 
     home.stateVersion = "24.05";
@@ -112,13 +134,21 @@
     git
     ripgrep
 
+    gimp
+    feh
     kitty
     wofi
     waybar
 
     killall
     htop
+    nix-search-cli
+    ranger
+
+    vesktop
   ];
+
+  environment.variables.EDITOR = "vim";
 
   fonts.packages = with pkgs; [
     font-awesome
