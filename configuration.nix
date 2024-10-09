@@ -11,6 +11,8 @@
       <home-manager/nixos>
     ];
 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -27,6 +29,15 @@
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
+  };
+
+  programs.zsh = {
+    ohMyZsh = {
+      theme = "robbyrussell";
+      enable = true;
+      plugins = [ "git" ];
+    };
+    enable = true;
   };
 
   # Enable the GNOME Desktop Environment.
@@ -95,14 +106,30 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim
     wget
+    vim
     tmux
-    neofetch
+    git
+    ripgrep
+
     kitty
     wofi
-    git
+    waybar
+
+    killall
+    htop
   ];
+
+  fonts.packages = with pkgs; [
+    font-awesome
+    noto-fonts
+    (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" "Hack" ]; })
+  ];
+
+  services.ollama = {
+    enable = true;
+    acceleration = "rocm";
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
