@@ -266,6 +266,7 @@
     tmux
     git
     ripgrep
+    wl-clipboard
 
     gimp
     feh
