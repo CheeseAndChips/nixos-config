@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports =
@@ -54,6 +54,17 @@
     keyMode = "vi";
   };
 
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "steam"
+    "steam-original"
+    "steam-run"
+  ];
+  programs.steam = {
+    enable = true;
+    dedicatedServer.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = true;
+  };
+
   # Enable the GNOME Desktop Environment.
   # services.xserver.displayManager.gdm.enable = true;
   # services.xserver.desktopManager.gnome.enable = true;
@@ -103,6 +114,14 @@
     packages = with pkgs; [
     #  thunderbird
     ];
+  };
+
+  users.users.gaming = {
+    isNormalUser = true;
+    description = "I Do Gaming";
+    extraGroups = [ "networkmanager" ];
+    useDefaultShell = true;
+    packages = with pkgs; [ ];
   };
 
   home-manager.users.joris = { pkgs, ... }: {
@@ -244,6 +263,7 @@
             vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
         end)
         lspconfig.jdtls.setup({})
+        lspconfig.pyright.setup({})
         lsp.setup()
         vim.diagnostic.config({
             virtual_text = true,
@@ -267,6 +287,8 @@
     git
     ripgrep
     wl-clipboard
+    restic
+    pass-wayland
 
     gimp
     feh
@@ -281,6 +303,7 @@
     vesktop
 
     jdt-language-server
+    pyright
   ];
 
   environment.variables.EDITOR = "vim";
