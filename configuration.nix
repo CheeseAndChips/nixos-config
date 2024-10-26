@@ -124,7 +124,17 @@
     packages = with pkgs; [ ];
   };
 
-  home-manager.users.joris = { pkgs, ... }: {
+  home-manager.users.gaming = { pkgs, ... }:
+  {
+    wayland.windowManager.hyprland = {
+      enable = true;
+      extraConfig = builtins.readFile ./wm/hyprland.conf;
+    };
+    home.stateVersion = "24.05";
+  };
+
+  home-manager.users.joris = { pkgs, ... }:
+  {
     programs.vim = {
       enable = true;
       settings = {
@@ -136,6 +146,10 @@
       enable = true;
       userName = "Joris Pevcevičius";
       userEmail = "joris.pevcas@gmail.com";
+    };
+    wayland.windowManager.hyprland = {
+      enable = true;
+      extraConfig = builtins.readFile ./wm/hyprland.conf;
     };
     programs.neovim = {
       enable = true;
