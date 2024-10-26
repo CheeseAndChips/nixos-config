@@ -344,6 +344,7 @@
     wl-clipboard
     restic
     pass-wayland
+    unzip
 
     gimp
     feh
