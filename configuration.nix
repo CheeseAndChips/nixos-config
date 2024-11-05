@@ -3,7 +3,6 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, lib, ... }:
-
 {
   imports =
     [
@@ -27,6 +26,7 @@
 
   networking.hostName = "tabletop";
   networking.networkmanager.enable = true;
+  networking.firewall.enable = false;
   time.timeZone = "Europe/Vilnius";
   i18n.defaultLocale = "en_US.UTF-8";
 
