@@ -67,6 +67,7 @@
     enable = true;
     escapeTime = 0;
     keyMode = "vi";
+    extraConfig = "set-option -g default-shell ${pkgs.zsh}/bin/zsh";
   };
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
@@ -319,6 +320,7 @@
         end)
         lspconfig.jdtls.setup({})
         lspconfig.pyright.setup({})
+        lspconfig.rust_analyzer.setup({})
         lsp.setup()
         vim.diagnostic.config({
             virtual_text = true,
