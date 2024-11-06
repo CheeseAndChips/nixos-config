@@ -8,6 +8,8 @@
     [
       ./hardware-configuration.nix
       <home-manager/nixos>
+
+      ./wm/hyprland.nix
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -34,10 +36,6 @@
   services.xserver.enable = true;
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
 
   programs.zsh = {
     # grml-zsh-config according to https://discourse.nixos.org/t/using-zsh-with-grml-config-and-nix-shell-prompt-indicator/13838
@@ -209,10 +207,6 @@
         name = "Sans";
         size = 10;
       };
-    };
-    wayland.windowManager.hyprland = {
-      enable = true;
-      extraConfig = builtins.readFile ./wm/hyprland.conf;
     };
     programs.neovim = {
       enable = true;
