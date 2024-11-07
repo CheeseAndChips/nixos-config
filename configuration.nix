@@ -9,8 +9,10 @@
       ./hardware-configuration.nix
       <home-manager/nixos>
 
-      ./wm/hyprland.nix
+      ./wm
     ];
+
+  wmconfig.users = [ "joris" "gaming" ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -125,17 +127,13 @@
     description = "Joris";
     extraGroups = [ "networkmanager" "wheel" ];
     useDefaultShell = true;
-    packages = with pkgs; [
-    #  thunderbird
-    ];
   };
 
   users.users.gaming = {
     isNormalUser = true;
-    description = "I Do Gaming";
+    description = "Gaming";
     extraGroups = [ "networkmanager" ];
     useDefaultShell = true;
-    packages = with pkgs; [ ];
   };
 
   fileSystems."/mnt/nfs" = {
@@ -166,10 +164,6 @@
 
   home-manager.users.gaming = { pkgs, ... }:
   {
-    wayland.windowManager.hyprland = {
-      enable = true;
-      extraConfig = builtins.readFile ./wm/hyprland.conf;
-    };
     home.stateVersion = "24.05";
   };
 
@@ -186,27 +180,6 @@
       enable = true;
       userName = "Joris Pevcevičius";
       userEmail = "joris.pevcas@gmail.com";
-    };
-    home.pointerCursor = {
-      gtk.enable = true;
-      package = pkgs.bibata-cursors;
-      name = "Bibata-Original-Ice";
-      size = 26;
-    };
-    gtk = {
-      enable = true;
-      theme = {
-        package = pkgs.flat-remix-gtk;
-        name = "Flat-Remix-GTK-Green-Darkest";
-      };
-      iconTheme = {
-        package = pkgs.kdePackages.breeze-icons;
-        name = "BreezeIcons";
-      };
-      font = {
-        name = "Sans";
-        size = 10;
-      };
     };
     programs.neovim = {
       enable = true;
@@ -366,8 +339,6 @@
     gimp
     feh
     kitty
-    wofi
-    waybar
 
     killall
     htop
@@ -380,12 +351,6 @@
   ];
 
   environment.variables.EDITOR = "vim";
-
-  fonts.packages = with pkgs; [
-    font-awesome
-    noto-fonts
-    (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" "Hack" ]; })
-  ];
 
   services.ollama = {
     enable = true;

@@ -1,0 +1,11 @@
+{
+  monitor = "DP-1";
+  show = "drun";
+  columns = 2;
+  width = "35%";
+  no_actions = true;
+  allow_images = true;
+  insensitive = true;
+  image_size = 40;
+  prompt="  Search...";
+}
