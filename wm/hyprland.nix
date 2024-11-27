@@ -136,5 +136,9 @@
     "$mainMod, mouse:273, resizewindow"
   ];
 
-  windowrulev2 = "suppressevent maximize, class:.*";
+  windowrulev2 = [
+    "suppressevent maximize, class:.*"
+    "float, class:^(qalculate-gtk)$"
+    "size 700 550, class:^(qalculate-gtk)$"
+  ];
 }

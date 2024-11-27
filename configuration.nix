@@ -153,12 +153,17 @@
     gimp
     feh
     kitty
+    qalculate-gtk
 
     killall
     htop
     nix-search-cli
     ranger
     vesktop
+
+    linux-manual
+    man-pages
+    man-pages-posix
   ];
 
   environment.variables.EDITOR = "vim";
@@ -166,6 +171,16 @@
   services.ollama = {
     enable = true;
     acceleration = "rocm";
+  };
+
+  documentation = {
+    enable = true;
+    man = {
+      enable = true;
+      man-db.enable = true;
+      generateCaches = true;
+    };
+    dev.enable = true;
   };
 
   # Some programs need SUID wrappers, can be configured further or are
