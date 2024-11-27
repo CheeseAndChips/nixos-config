@@ -30,6 +30,7 @@
       useOSProber = true;
     };
   };
+  boot.tmp.useTmpfs = true;
   # boot.loader.systemd-boot.enable = true;
 
   networking.hostName = "tabletop";
