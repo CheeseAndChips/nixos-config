@@ -3,6 +3,7 @@
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "steam"
     "steam-original"
+    "steam-unwrapped"
     "steam-run"
   ];
   programs.steam = {
@@ -23,9 +24,8 @@
     home.stateVersion = "24.05";
   };
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
   };
 }
