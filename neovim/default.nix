@@ -10,6 +10,7 @@
       jdt-language-server
       pyright
       rust-analyzer
+      clang-tools
     ];
 
     home-manager.users = with builtins; listToAttrs (map
@@ -145,6 +146,7 @@
               lspconfig.jdtls.setup({})
               lspconfig.pyright.setup({})
               lspconfig.rust_analyzer.setup({})
+              lspconfig.clangd.setup({})
               lsp.setup()
               vim.diagnostic.config({
                   virtual_text = true,

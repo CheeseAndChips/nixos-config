@@ -178,7 +178,7 @@
     man = {
       enable = true;
       man-db.enable = true;
-      generateCaches = true;
+      generateCaches = false;
     };
     dev.enable = true;
   };
