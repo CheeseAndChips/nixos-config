@@ -153,10 +153,14 @@
     pass-wayland
     unzip
 
+    zathura
     gimp
     feh
     kitty
     qalculate-gtk
+    mpv
+    yubikey-personalization
+    yubikey-manager
 
     killall
     htop
