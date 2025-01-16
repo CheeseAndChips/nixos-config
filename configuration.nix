@@ -20,6 +20,8 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  powerManagement.cpuFreqGovernor = "performance";
+
   # Bootloader.
   boot.loader = {
     efi.canTouchEfiVariables = true;
@@ -31,6 +33,7 @@
     };
   };
   boot.tmp.useTmpfs = true;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   # boot.loader.systemd-boot.enable = true;
 
   networking.hostName = "tabletop";
