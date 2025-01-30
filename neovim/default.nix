@@ -11,6 +11,7 @@
       pyright
       rust-analyzer
       clang-tools
+      haskell-language-server
     ];
 
     home-manager.users = with builtins; listToAttrs (map
@@ -147,6 +148,7 @@
               lspconfig.pyright.setup({})
               lspconfig.rust_analyzer.setup({})
               lspconfig.clangd.setup({})
+              lspconfig.hls.setup({})
               lsp.setup()
               vim.diagnostic.config({
                   virtual_text = true,
