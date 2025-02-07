@@ -152,6 +152,8 @@
     restic
     pass-wayland
     unzip
+    file
+    qemu
 
     zathura
     gimp
