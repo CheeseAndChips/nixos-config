@@ -12,6 +12,7 @@
       rust-analyzer
       clang-tools
       haskell-language-server
+      nixd
     ];
 
     home-manager.users = with builtins; listToAttrs (map
@@ -149,6 +150,7 @@
               lspconfig.rust_analyzer.setup({})
               lspconfig.clangd.setup({})
               lspconfig.hls.setup({})
+              lspconfig.nixd.setup({})
               lsp.setup()
               vim.diagnostic.config({
                   virtual_text = true,
