@@ -95,6 +95,7 @@
     "$mainMod, P, pseudo, # dwindle"
     "$mainMod, V, togglesplit, # dwindle"
     "$mainMod, F, fullscreen"
+    "$mainMod, U, exec, hyprlock"
 
     "bind = $mainMod, h, movefocus, l"
     "bind = $mainMod, l, movefocus, r"

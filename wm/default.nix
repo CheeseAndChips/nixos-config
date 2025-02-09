@@ -3,6 +3,7 @@ let
   hyprconfig = import ./hyprland.nix;
   waybarconfig = import ./waybar;
   woficonfig = import ./wofi;
+  hyprlockconfig = import ./hyprlock.nix;
 in
 {
   options.wmconfig = {
@@ -41,6 +42,11 @@ in
             enable = true;
             settings = woficonfig;
             style = builtins.readFile ./wofi/style.css;
+          };
+
+          programs.hyprlock = {
+            enable = true;
+            settings = hyprlockconfig;
           };
 
           home.pointerCursor = {
