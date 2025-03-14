@@ -13,6 +13,7 @@
       clang-tools
       haskell-language-server
       nixd
+      cmake-language-server
     ];
 
     home-manager.users = with builtins; listToAttrs (map
@@ -151,6 +152,7 @@
               lspconfig.clangd.setup({})
               lspconfig.hls.setup({})
               lspconfig.nixd.setup({})
+              lspconfig.cmake.setup({})
               lsp.setup()
               vim.diagnostic.config({
                   virtual_text = true,
