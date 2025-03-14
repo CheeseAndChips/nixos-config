@@ -3,6 +3,9 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, lib, ... }:
+let
+  secrets = import ./secrets.nix;
+in
 {
   imports =
     [
@@ -133,6 +136,19 @@
       enable = true;
       userName = "Joris Pevcevičius";
       userEmail = "joris.pevcas@gmail.com";
+    };
+    programs.ssh = {
+      enable = true;
+      matchBlocks.storage = {
+        hostname = secrets.backup.hostname;
+        user = secrets.backup.username;
+        port = secrets.backup.port;
+        extraOptions = {
+          ControlPath = "~/.ssh/master-%r@%n:%p";
+          ControlMaster = "auto";
+          ControlPersist = "10m";
+        };
+      };
     };
     home.stateVersion = "24.05";
   };
