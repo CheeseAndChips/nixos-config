@@ -17,6 +17,7 @@
     description = "Gaming";
     extraGroups = [ "networkmanager" ];
     useDefaultShell = true;
+    packages = with pkgs; [ prismlauncher ];
   };
 
   home-manager.users.gaming = { pkgs, ... }:
