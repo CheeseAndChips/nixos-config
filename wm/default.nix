@@ -11,6 +11,10 @@ in
   };
 
   config = {
+    environment.systemPackages = with pkgs; [
+      hyprshot
+    ];
+
     fonts.packages = with pkgs; [
       font-awesome
       noto-fonts

@@ -96,6 +96,7 @@
     "$mainMod, V, togglesplit, # dwindle"
     "$mainMod, F, fullscreen"
     "$mainMod, U, exec, hyprlock"
+    "Print, exec, hyprshot -m region -o ~/Pictures"
 
     "bind = $mainMod, h, movefocus, l"
     "bind = $mainMod, l, movefocus, r"
