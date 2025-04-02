@@ -187,6 +187,8 @@ in
     nix-search-cli
     ranger
     vesktop
+    vlc
+    transmission-gtk
 
     linux-manual
     man-pages
