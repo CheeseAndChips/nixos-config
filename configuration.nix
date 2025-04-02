@@ -117,6 +117,7 @@ in
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.joris = {
+    openssh.authorizedKeys.keyFiles = [ ./ssh/thinkpad_yubikey.pub ];
     isNormalUser = true;
     description = "Joris";
     extraGroups = [ "networkmanager" "wheel" ];

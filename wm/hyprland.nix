@@ -96,12 +96,12 @@
     "$mainMod, V, togglesplit, # dwindle"
     "$mainMod, F, fullscreen"
     "$mainMod, U, exec, hyprlock"
-    "Print, exec, hyprshot -m region -o ~/Pictures"
+    ", Print, exec, hyprshot -m region -o ~/Pictures"
 
-    "bind = $mainMod, h, movefocus, l"
-    "bind = $mainMod, l, movefocus, r"
-    "bind = $mainMod, k, movefocus, u"
-    "bind = $mainMod, j, movefocus, d"
+    "$mainMod, h, movefocus, l"
+    "$mainMod, l, movefocus, r"
+    "$mainMod, k, movefocus, u"
+    "$mainMod, j, movefocus, d"
 
     "$mainMod, 1, workspace, 1"
     "$mainMod, 2, workspace, 2"
