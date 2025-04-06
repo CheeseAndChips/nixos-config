@@ -188,7 +188,7 @@ in
     ranger
     vesktop
     vlc
-    transmission-gtk
+    transmission_4-gtk
 
     linux-manual
     man-pages

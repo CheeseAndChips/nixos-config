@@ -13,6 +13,7 @@ in
   config = {
     environment.systemPackages = with pkgs; [
       hyprshot
+      mako
     ];
 
     fonts.packages = with pkgs; [
