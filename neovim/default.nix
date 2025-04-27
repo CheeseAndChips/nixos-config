@@ -63,7 +63,12 @@
                   od.setup {
                     style = 'warmer'
                   }
-                  od.load()
+                '';
+              }
+              { plugin = midnight-nvim;
+                type = "lua";
+                config = ''
+                  vim.cmd([[ colorscheme midnight ]])
                 '';
               }
             ];

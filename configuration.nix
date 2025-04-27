@@ -78,7 +78,11 @@ in
     enable = true;
     escapeTime = 0;
     keyMode = "vi";
-    extraConfig = "set-option -g default-shell ${pkgs.zsh}/bin/zsh";
+    extraConfig = ''
+      set-option -g default-shell ${pkgs.zsh}/bin/zsh
+      set-option -g status-bg colour239
+      set-option -g status-fg white
+    '';
   };
 
   # Enable the GNOME Desktop Environment.
@@ -193,6 +197,8 @@ in
     linux-manual
     man-pages
     man-pages-posix
+
+    libnotify
   ];
 
   environment.variables.EDITOR = "vim";
