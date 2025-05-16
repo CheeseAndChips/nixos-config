@@ -203,11 +203,6 @@ in
 
   environment.variables.EDITOR = "vim";
 
-  services.ollama = {
-    enable = true;
-    acceleration = "rocm";
-  };
-
   documentation = {
     enable = true;
     man = {
