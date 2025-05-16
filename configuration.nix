@@ -213,6 +213,11 @@ in
     dev.enable = true;
   };
 
+  # stm32 usb
+  services.udev.extraRules = ''
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374b", OWNER:="joris", SYMLINK+="stlinkv2-1_%n"
+  '';
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
