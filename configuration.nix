@@ -16,6 +16,7 @@ in
       ./neovim
       ./gaming
       ./backuper
+      ./virt.nix
     ];
 
   wmconfig.users = [ "joris" "gaming" ];
