@@ -176,6 +176,29 @@ in
     file
     qemu
     wine-staging
+    gdu
+    btop
+    dig
+    dos2unix
+    e2fsprogs
+    ffmpeg
+    fzf
+    gnuplot
+    iotop
+    mpv
+    pavucontrol
+    usbutils
+    squashfsTools
+    stlink
+    stress
+    xfce.thunar
+    whois
+    xournalpp
+    zip
+    p7zip
+
+    python3
+    python3Packages.ipython
 
     libreoffice
     zathura
