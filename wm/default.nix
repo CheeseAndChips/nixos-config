@@ -19,7 +19,8 @@ in
     fonts.packages = with pkgs; [
       font-awesome
       noto-fonts
-      (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" "Hack" ]; })
+      nerd-fonts.symbols-only
+      nerd-fonts.hack
     ];
 
     programs.hyprland = {
