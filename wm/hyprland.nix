@@ -1,5 +1,5 @@
 {
-  monitor = ",highrr,auto,auto";
+  monitor = ",highrr,auto,1.25";
 
   "$terminal" = "kitty";
   "$menu" = "wofi --show drun";

@@ -3,9 +3,9 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, lib, ... }:
-let
-  secrets = import ./secrets.nix;
-in
+# let
+#   secrets = import ./secrets.nix;
+# in
 {
   imports =
     [
@@ -14,12 +14,12 @@ in
 
       ./wm
       ./neovim
-      ./gaming
-      ./backuper
-      ./virt.nix
+      # ./gaming
+      # ./backuper
+      # ./virt.nix
     ];
 
-  wmconfig.users = [ "joris" "gaming" ];
+  wmconfig.users = [ "joris" ];
   neovimconfig.users = [ "joris" ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -36,11 +36,20 @@ in
       useOSProber = true;
     };
   };
+
+  boot.initrd.luks.devices = {
+    crypted = {
+      device = "/dev/disk/by-uuid/ae98b94b-9bb0-426d-bf0f-15b10f7b48dc";
+      preLVM = true;
+      allowDiscards = true;
+    };
+  };
+
   boot.tmp.useTmpfs = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
   # boot.loader.systemd-boot.enable = true;
 
-  networking.hostName = "tabletop";
+  networking.hostName = "laptop";
   networking.networkmanager.enable = true;
   networking.firewall.enable = false;
   time.timeZone = "Europe/Vilnius";
@@ -151,18 +160,18 @@ in
     };
     programs.ssh = {
       enable = true;
-      matchBlocks.storage = {
-        hostname = secrets.backup.hostname;
-        user = secrets.backup.username;
-        port = secrets.backup.port;
-        extraOptions = {
-          ControlPath = "~/.ssh/master-%r@%n:%p";
-          ControlMaster = "auto";
-          ControlPersist = "10m";
-        };
-      };
+      # matchBlocks.storage = {
+      #   hostname = secrets.backup.hostname;
+      #   user = secrets.backup.username;
+      #   port = secrets.backup.port;
+      #   extraOptions = {
+      #     ControlPath = "~/.ssh/master-%r@%n:%p";
+      #     ControlMaster = "auto";
+      #     ControlPersist = "10m";
+      #   };
+      # };
     };
-    home.stateVersion = "24.05";
+    home.stateVersion = "25.05";
   };
 
   # Install firefox.
@@ -270,6 +279,6 @@ in
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "25.05"; # Did you read the comment?
 
 }
