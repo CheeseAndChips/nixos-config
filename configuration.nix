@@ -50,6 +50,7 @@ in
   services.xserver.enable = true;
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
+  services.upower.enable = true;
 
   programs.zsh = {
     # grml-zsh-config according to https://discourse.nixos.org/t/using-zsh-with-grml-config-and-nix-shell-prompt-indicator/13838
@@ -85,6 +86,8 @@ in
       set-option -g status-fg white
     '';
   };
+
+  programs.pulseview.enable = true;
 
   # Enable the GNOME Desktop Environment.
   # services.xserver.displayManager.gdm.enable = true;
@@ -125,7 +128,7 @@ in
     openssh.authorizedKeys.keyFiles = [ ./ssh/thinkpad_yubikey.pub ];
     isNormalUser = true;
     description = "Joris";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "dialout" ];
     useDefaultShell = true;
   };
 
@@ -142,6 +145,9 @@ in
       enable = true;
       userName = "Joris Pevcevičius";
       userEmail = "joris.pevcas@gmail.com";
+      extraConfig = {
+        credential.helper = "store";
+      };
     };
     programs.ssh = {
       enable = true;
@@ -217,6 +223,7 @@ in
     vesktop
     vlc
     transmission_4-gtk
+    signal-desktop
 
     linux-manual
     man-pages
