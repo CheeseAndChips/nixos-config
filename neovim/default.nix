@@ -14,6 +14,7 @@
       haskell-language-server
       nixd
       cmake-language-server
+      zls
     ];
 
     home-manager.users = with builtins; listToAttrs (map
@@ -158,6 +159,7 @@
               lspconfig.hls.setup({})
               lspconfig.nixd.setup({})
               lspconfig.cmake.setup({})
+              lspconfig.zls.setup({})
               lsp.setup()
               vim.diagnostic.config({
                   virtual_text = true,
