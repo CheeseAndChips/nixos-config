@@ -256,7 +256,7 @@
 }
 
 #battery {
-    background: @battery;
+    background: @nord_bg;
 }
 
 #backlight {

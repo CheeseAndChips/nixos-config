@@ -4,7 +4,7 @@
     position = "top";
     modules-left = [ "clock" "hyprland/language" "idle_inhibitor" ];
     modules-center = [ "hyprland/workspaces" ];
-    modules-right = ["cpu" "temperature" "pulseaudio" "network" "tray"];
+    modules-right = [ "battery" "cpu" "temperature" "pulseaudio" "network" "tray" ];
 
     "hyprland/workspaces" = {
       disable-scroll = true;
@@ -43,6 +43,13 @@
         tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
         today-format = "<b>{}</b>";
         on-click = "gnome-calendar";
+    };
+
+    battery = {
+      bat = "BAT0";
+      adapter = "AC";
+      format = "󰁹 {capacity}%";
+      format-charging = "󰂄 {capacity}%";
     };
 
     cpu = {

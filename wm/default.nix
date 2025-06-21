@@ -14,6 +14,7 @@ in
     environment.systemPackages = with pkgs; [
       hyprshot
       mako
+      brightnessctl
     ];
 
     fonts.packages = with pkgs; [
