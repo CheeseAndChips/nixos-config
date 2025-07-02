@@ -75,6 +75,7 @@
 
 /* Each module */
 #battery,
+#disk,
 #clock,
 #cpu,
 #custom-layout,
@@ -256,6 +257,10 @@
 }
 
 #battery {
+    background: @nord_bg;
+}
+
+#disk {
     background: @nord_bg;
 }
 

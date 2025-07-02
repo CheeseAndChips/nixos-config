@@ -25,13 +25,18 @@
         min-length = 5;
     };
 
-    idle_inhibitor = {
-        format = "{icon}";
-        format-icons = {
-            activated = " ";
-            deactivated = " ";
-        };
-        tooltip = true;
+    # idle_inhibitor = {
+    #     format = "{icon}";
+    #     format-icons = {
+    #         activated = " ";
+    #         deactivated = " ";
+    #     };
+    #     tooltip = true;
+    # };
+
+    disk = {
+        path = "/";
+        format = "  {free}";
     };
 
     tray = {
