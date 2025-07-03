@@ -3,6 +3,7 @@
 
   "$terminal" = "kitty";
   "$menu" = "wofi --show drun";
+  "$batterycap" = "wofi -d | batterylimit";
 
   exec-once = [
     "waybar"
@@ -92,6 +93,7 @@
     "$mainMod, E, exec, $fileManager"
     "$mainMod, SPACE, togglefloating,"
     "$mainMod, D, exec, $menu"
+    "$mainMod, Y, exec, $batterycap"
     "$mainMod, P, pseudo, # dwindle"
     "$mainMod, V, togglesplit, # dwindle"
     "$mainMod, F, fullscreen"

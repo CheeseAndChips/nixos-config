@@ -91,6 +91,7 @@
 #tray,
 #backlight,
 #language,
+#custom-battery_capacity,
 #custom-cpugovernor {
     padding-left: 0.6em;
     padding-right: 0.6em;
@@ -261,6 +262,10 @@
 }
 
 #disk {
+    background: @nord_bg;
+}
+
+#custom-battery_capacity {
     background: @nord_bg;
 }
 

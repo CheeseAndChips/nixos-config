@@ -2,9 +2,9 @@
   mainBar = {
     layer = "top";
     position = "top";
-    modules-left = [ "clock" "hyprland/language" "idle_inhibitor" ];
+    modules-left = [ "clock" "hyprland/language" ];
     modules-center = [ "hyprland/workspaces" ];
-    modules-right = [ "battery" "cpu" "temperature" "pulseaudio" "network" "tray" ];
+    modules-right = [ "disk" "battery" "custom/battery_capacity" "cpu" "temperature" "pulseaudio" "network" "tray" ];
 
     "hyprland/workspaces" = {
       disable-scroll = true;
@@ -59,10 +59,10 @@
 
     cpu = {
         interval = "1";
-        format = "  {usage}% <span color=\"darkgray\">| {max_frequency}GHz</span>";
-        max-length = 13;
-        min-length = 13;
-        on-click = "kitty -e htop --sort-key PERCENT_CPU";
+        # format = "  {usage}% <span color=\"darkgray\">| {max_frequency}GHz</span>";
+        format = "  {usage}%";
+        # max-length = 13;
+        # min-length = 13;
         tooltip = false;
     };
 
@@ -109,17 +109,6 @@
         on-click-right = "pactl set-source-mute @DEFAULT_SOURCE@ toggle";
     };
 
-    "custom/gpu" = {
-      exec = ./gpu.sh;
-      return-type = "json";
-      format = "  {}";
-      interval = 2;
-      tooltip = "{tooltip}";
-      max-length = 19;
-      min-length = 19;
-      on-click = "powerupp";
-    };
-
     "custom/cpugovernor" = {
       format = "{icon}";
       interval = 30;
@@ -131,6 +120,12 @@
         perf = "";
         sched = "";
       };
+    };
+
+    "custom/battery_capacity" = {
+      format = "CAP {text}";
+      exec = "cat /var/tmp/current_battery_limit";
+      interval = 1;
     };
   };
 }

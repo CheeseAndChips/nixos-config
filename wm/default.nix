@@ -4,6 +4,7 @@ let
   waybarconfig = import ./waybar;
   woficonfig = import ./wofi;
   hyprlockconfig = import ./hyprlock.nix;
+  battery = pkgs.callPackage ./battery {};
 in
 {
   options.wmconfig = {
@@ -11,6 +12,13 @@ in
   };
 
   config = {
+    security.wrappers.batterylimit = {
+      setuid = true;
+      owner = "root";
+      group = "root";
+      source = "${battery}";
+    };
+
     environment.systemPackages = with pkgs; [
       hyprshot
       mako
