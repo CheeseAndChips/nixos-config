@@ -6,6 +6,7 @@
     "steam-unwrapped"
     "steam-run"
   ];
+
   programs.steam = {
     enable = true;
     dedicatedServer.openFirewall = true;
@@ -17,7 +18,7 @@
     description = "Gaming";
     extraGroups = [ "networkmanager" ];
     useDefaultShell = true;
-    packages = with pkgs; [ prismlauncher ];
+    # packages = with pkgs; [ prismlauncher ];
   };
 
   home-manager.users.gaming = { pkgs, ... }:
@@ -28,13 +29,13 @@
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
-    extraPackages = with pkgs; [ rocmPackages.clr.icd ];
+    # extraPackages = with pkgs; [ rocmPackages.clr.icd ];
   };
 
-  boot.initrd.kernelModules = [ "amdgpu" ];
-  systemd.tmpfiles.rules = [
-    "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
-  ];
+  # boot.initrd.kernelModules = [ "amdgpu" ];
+  # systemd.tmpfiles.rules = [
+  #   "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
+  # ];
   environment.systemPackages = with pkgs; [
     clinfo
   ];

@@ -14,7 +14,7 @@
 
       ./wm
       ./neovim
-      # ./gaming
+      ./gaming
       # ./backuper
       # ./virt.nix
     ];
