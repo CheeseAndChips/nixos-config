@@ -19,7 +19,7 @@
       # ./virt.nix
     ];
 
-  wmconfig.users = [ "joris" ];
+  wmconfig.users = [ "joris" "gaming" ];
   neovimconfig.users = [ "joris" ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
