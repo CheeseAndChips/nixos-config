@@ -24,4 +24,26 @@
       shadow_passes = 2;
     }
   ];
+  label = [
+    {
+      text = "$TIME";
+      position = "0, 60";
+      font_size = 46;
+      color = "rgb(202, 211, 245)";
+    }
+    {
+      text = "$USER";
+      position = "0, -10";
+      font_size = 16;
+      color = "rgb(150, 160, 180)";
+    }
+    {
+      text = "$LAYOUT";
+      position = "-10, 10";
+      font_size = 12;
+      valign = "bottom";
+      halign = "right";
+      color = "rgb(150, 160, 180)";
+    }
+  ];
 }
