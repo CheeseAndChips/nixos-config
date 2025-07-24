@@ -1,10 +1,13 @@
+let
+  big = str: "<big>" + str + "</big>";
+in
 {
   mainBar = {
     layer = "top";
     position = "top";
-    modules-left = [ "clock" "hyprland/language" ];
-    modules-center = [ "hyprland/workspaces" ];
-    modules-right = [ "disk" "battery" "custom/battery_capacity" "cpu" "temperature" "pulseaudio" "network" "tray" ];
+    modules-left = [ "hyprland/workspaces" ];
+    modules-center = [ "clock" ];
+    modules-right = [ "tray" "bluetooth" "hyprland/language" "battery" "custom/battery_capacity" "pulseaudio" "network" ];
 
     "hyprland/workspaces" = {
       disable-scroll = true;
@@ -13,30 +16,10 @@
       all-outputs = true;
     };
 
-    "hyprland/window" = {
-      format = "{}";
-      max-length = 50;
-      tooltip = false;
-    };
-
     "hyprland/language" = {
-        format = "<big></big> {short}";
+        format = "${big ""} {short}";
         max-length = 5;
         min-length = 5;
-    };
-
-    # idle_inhibitor = {
-    #     format = "{icon}";
-    #     format-icons = {
-    #         activated = " ";
-    #         deactivated = " ";
-    #     };
-    #     tooltip = true;
-    # };
-
-    disk = {
-        path = "/";
-        format = "  {free}";
     };
 
     tray = {
@@ -44,8 +27,8 @@
     };
 
     clock = {
-        format = "  {:%H:%M   %e %b}";
-        tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+        format = "{:%b %e %H:%M}";
+        tooltip-format = "<tt><big>{calendar}</big></tt>";
         today-format = "<b>{}</b>";
         on-click = "gnome-calendar";
     };
@@ -53,39 +36,19 @@
     battery = {
       bat = "BAT0";
       adapter = "AC";
-      format = "󰁹 {capacity}%";
-      format-charging = "󰂄 {capacity}%";
-    };
-
-    cpu = {
-        interval = "1";
-        # format = "  {usage}% <span color=\"darkgray\">| {max_frequency}GHz</span>";
-        format = "  {usage}%";
-        # max-length = 13;
-        # min-length = 13;
-        tooltip = false;
-    };
-
-    temperature = {
-        thermal-zone = 2;
-        interval = "1";
-        critical-threshold = 74;
-        format-critical = "  {temperatureC}°C";
-        format = "{icon}  {temperatureC}°C";
-        format-icons = [""];
-        max-length = 7;
-        min-length = 7;
+      format = "${big "󰁹"} {capacity}%";
+      format-charging = "${big "󰂄"} {capacity}%";
     };
 
     network = {
-        format-wifi = "  {essid}";
-        format-ethernet = " {ipaddr}   {bandwidthUpBits}   {bandwidthDownBits}";
+        format-wifi = "${big " "} {essid}";
+        format-ethernet = "${big " "} {ipaddr}";
         format-linked = "{ifname} (No IP) ";
-        format-disconnected = "";
+        format-disconnected = big "󰖪 ";
         format-alt = "{ifname}: {ipaddr}/{cidr}";
         family = "ipv4";
-        tooltip-format-wifi = "  {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\n {bandwidthUpBits}  {bandwidthDownBits}";
-        tooltip-format-ethernet = " {ifname}\nIP: {ipaddr}/{cidr}\n  {bandwidthUpBits}  {bandwidthDownBits}";
+        tooltip-format-wifi = "  {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\n {bandwidthUpBits}  {bandwidthDownBits}";
+        tooltip-format-ethernet = " {ifname}\nIP: {ipaddr}/{cidr}\n {bandwidthUpBits}  {bandwidthDownBits}";
     };
 
     pulseaudio = {
@@ -93,39 +56,32 @@
         format = "{icon}  {volume}% {format_source}";
         # format-bluetooth = "{volume}% {icon} {format_source}";
         # format-bluetooth-muted = " {icon} {format_source}";
-        format-muted = "  {format_source}";
-        format-source = "";
-        format-source-muted = " ";
+        format-muted = "${big " "} {format_source}";
+        format-source = big "";
+        format-source-muted = big " ";
         format-icons = {
-            headphone = "";
-            hands-free = "";
-            headset = "";
-            phone = "";
-            portable = "";
-            car = "";
-            default = ["" "" ""];
+            headphone = big " ";
+            hands-free = big " ";
+            headset = big " ";
+            phone = big " ";
+            portable = big " ";
+            default = [(big "") (big " ") (big " ")];
         };
         on-click = "pavucontrol";
         on-click-right = "pactl set-source-mute @DEFAULT_SOURCE@ toggle";
-    };
-
-    "custom/cpugovernor" = {
-      format = "{icon}";
-      interval = 30;
-      return-type = "json";
-      exec = ./cpugovernor.sh;
-      min-length = 2;
-      max-length = 2;
-      format-icons = {
-        perf = "";
-        sched = "";
-      };
     };
 
     "custom/battery_capacity" = {
       format = "CAP {text}";
       exec = "cat /var/tmp/current_battery_limit";
       interval = 1;
+    };
+
+    bluetooth = {
+      format = big "󰂲";
+      format-on = big "󰂯";
+      format-connected = "${big "󰂯"} {device_alias}";
+      on-click = "blueman-manager";
     };
   };
 }
