@@ -16,7 +16,7 @@
       ./neovim
       ./gaming
       # ./backuper
-      # ./virt.nix
+      ./virt.nix
     ];
 
   wmconfig.users = [ "joris" "gaming" ];
@@ -142,6 +142,8 @@
     useDefaultShell = true;
   };
 
+  programs.ssh.startAgent = true;
+
   home-manager.users.joris = { pkgs, ... }:
   {
     programs.vim = {
@@ -253,6 +255,12 @@
     };
     dev.enable = true;
   };
+
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
+  services.blueman.enable = true;
 
   # stm32 usb
   services.udev.extraRules = ''
