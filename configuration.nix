@@ -26,6 +26,16 @@
 
   powerManagement.cpuFreqGovernor = "performance";
 
+  nixpkgs.overlays = [
+    (final: prev: {
+      vesktop = prev.vesktop.overrideAttrs (old: {
+        patches = (old.patches or []) ++ [
+          ./vesktop.patch
+        ];
+      });
+    })
+  ];
+
   # Bootloader.
   boot.loader = {
     efi.canTouchEfiVariables = true;
