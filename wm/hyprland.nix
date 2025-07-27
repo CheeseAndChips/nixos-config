@@ -1,3 +1,4 @@
+{ pkgs }:
 {
   monitor = ",highrr,auto,1";
 
@@ -7,6 +8,7 @@
 
   exec-once = [
     "waybar"
+    "${pkgs.swaybg}/bin/swaybg -i ${./wallpaper.png}"
   ];
 
   env = [
@@ -69,8 +71,9 @@
   };
 
   misc = {
-    force_default_wallpaper = "0";
-    disable_hyprland_logo = "false";
+    force_default_wallpaper = 0;
+    disable_hyprland_logo = true;
+    disable_splash_rendering = true;
   };
 
   input = {

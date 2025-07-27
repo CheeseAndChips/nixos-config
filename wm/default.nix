@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 let
-  hyprconfig = import ./hyprland.nix;
+  hyprconfig = import ./hyprland.nix { inherit pkgs; };
   waybarconfig = import ./waybar;
   woficonfig = import ./wofi;
   hyprlockconfig = import ./hyprlock.nix;
