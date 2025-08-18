@@ -89,7 +89,7 @@ in
             enable = true;
             theme = {
               package = pkgs.flat-remix-gtk;
-              name = "Flat-Remix-GTK-Green-Darkest";
+              name = "Flat-Remix-GTK-Blue-Darkest";
             };
             iconTheme = {
               package = pkgs.kdePackages.breeze-icons;
